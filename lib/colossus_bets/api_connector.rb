@@ -36,6 +36,7 @@ class ColossusBets::ApiConnector
       }.to_json, 
       headers: @default_headers
     })
+    # Here was a problem couse i dont know how to use authontification key, cause it is not mentioned in DOCS.
   end
 
 end
