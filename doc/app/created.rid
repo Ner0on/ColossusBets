@@ -1,0 +1,11 @@
+Tue, 20 Oct 2015 15:04:59 +0300
+README.rdoc	Tue, 20 Oct 2015 13:03:55 +0300
+app/controllers/application_controller.rb	Tue, 20 Oct 2015 13:03:55 +0300
+app/controllers/index_controller.rb	Tue, 20 Oct 2015 13:32:13 +0300
+app/controllers/pools_controller.rb	Tue, 20 Oct 2015 13:52:21 +0300
+app/controllers/tickets_controller.rb	Tue, 20 Oct 2015 13:52:06 +0300
+app/helpers/application_helper.rb	Tue, 20 Oct 2015 13:03:55 +0300
+app/helpers/index_helper.rb	Tue, 20 Oct 2015 13:31:33 +0300
+app/helpers/pools_helper.rb	Tue, 20 Oct 2015 13:52:21 +0300
+app/helpers/tickets_helper.rb	Tue, 20 Oct 2015 13:52:06 +0300
+lib/colossus_bets/api_connector.rb	Tue, 20 Oct 2015 14:47:54 +0300
