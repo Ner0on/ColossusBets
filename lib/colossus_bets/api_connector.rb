@@ -1,24 +1,41 @@
 class ColossusBets::ApiConnector
   include HTTParty
-  base_uri 'api.sandbox.colossusbets.com'
   debug_output $stdout
-
+  base_uri 'api.sandbox.colossusbets.com'
+  
   def initialize
-    @options = {
-      body:
-        {
-          api_key: 'KklyUtXD7NQb8oIYQDMBDw',
-          api_secret: 'password'
-        }
+    @default_headers = {
+      'Content-Type' => 'application/json', 
+      'Accept' => 'application/json'
     }
   end
 
   def create_session
-    self.class.post("/v2/sessions/", {body: {api_key: 'KklyUtXD7NQb8oIYQDMBDw', api_secret: 'password' }} )
+    res = self.class.post("/v2/sessions/", {
+      body: {
+        api_key: 'KklyUtXD7NQb8oIYQDMBDw', 
+        api_secret: 'password' 
+      }.to_json, 
+      headers:  @default_headers} 
+    )
+    if res["access_token"].present?
+      ap res["access_token"]
+      @access_token = res["access_token"]
+      @refresh_token = res["refresh_token"]
+      return true
+    else
+      return false
+    end
   end
 
-  # Main problem of this Test task is that API all the time send me 406 error and some of this "x-xss-protection"=>["1; mode=block”]. 
-  # It happens when i try to POST /v2/sessions using HTTPparty gem
-  # I tried to rename body to query (i read this from stockower. solutions ) but it doesn't helps me 
+
+  def get_pools
+    ap self.class.get("/v2/pools/", {
+      body: {
+        access_token: @access_token
+      }.to_json, 
+      headers: @default_headers
+    })
+  end
 
 end
